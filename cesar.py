@@ -2,7 +2,7 @@ def encripta_cesar(plain_text: str, chave: int):
     if chave < 0 or chave > 25:
         raise ValueError("A chave deve ser um número entre 0 e 25")
     lista_string = list(plain_text)
-    count_letras=0
+    count_letras = 0
     letras = {
         0: "a",
         1: "b",
@@ -35,13 +35,13 @@ def encripta_cesar(plain_text: str, chave: int):
     for i in range(len(plain_text)):
         letra_atual = plain_text[i].lower()
         if plain_text[i].isalpha():
-            count_letras+=1
+            count_letras += 1
             for cod in letras.keys():
                 if letras[cod] == letra_atual:
                     codigo = cod
                     break
             lista_string[i] = letras[(codigo + chave) % 26]
-    print (count_letras)
+    print(count_letras)
     return "".join(lista_string)
 
 
@@ -208,7 +208,7 @@ def analise_frequencia_Cesar(texto_cifrado: str):
     for i in range(len(indice_mudancas)):
         lista_tupla_mudancas.append((i, indice_mudancas[i]))
     lista_tupla_mudancas.sort(key=lambda x: x[1], reverse=True)
-    
+
     maior_mudanca = lista_tupla_mudancas[0][0]
 
     print(f"Chave mais provável: {maior_mudanca}")
@@ -216,7 +216,7 @@ def analise_frequencia_Cesar(texto_cifrado: str):
 
 
 def força_bruta(texto_cifrado: str):
-    print ("\n")
+    print("\n")
     for i in range(26):
         print(f"Para chave {i}: {decripta_cesar(texto_cifrado, i)}\n")
 
@@ -232,8 +232,8 @@ def grid():
 
 grid()
 escolha = input()
-if not escolha in ['1', '2', '3', '4', '5']:
-    raise ValueError("A opção deve ser um número inteiro entre 1 e 5")
+if not escolha in ["1", "2", "3", "4", "5"]:
+    raise ValueError("Opção inválida")
 escolha = int(escolha)
 while escolha != 5:
     if escolha == 1:
@@ -262,6 +262,6 @@ while escolha != 5:
         força_bruta(texto)
     grid()
     escolha = input()
-    if not escolha in ['1', '2', '3', '4', '5']:
-        raise ValueError("A opção deve ser um número inteiro entre 1 e 5")
+    if not escolha in ["1", "2", "3", "4", "5"]:
+        raise ValueError("Opção inválida")
     escolha = int(escolha)
