@@ -33,16 +33,14 @@ def verifica_chave(chave: str):
     ]
     dict_letras = {letra: 0 for letra in letras}
     for letra in chave:
-        if letra not in letras:
-            raise ValueError("A chave não pode conter caracteres especiais nem números")
+        if not letra.isalpha():
+            raise ValueError("A chave não pode conter caracteres especiais, números e nem espaços")
         elif dict_letras[letra] > 0:
             raise ValueError("A chave não pode conter letras repetidas")
         dict_letras[letra] += 1
     if len(chave) == 0:
         raise ValueError("Chave inválida")
-    for letra in chave:
-        if letra.isdigit():
-            raise ValueError("A chave não pode conter números")
+
 
 
 def encripta_colunar(plain_text: str, chave: str):
